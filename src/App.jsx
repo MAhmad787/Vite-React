@@ -30,14 +30,28 @@ function App() {
       reminder: false,
     },
   ]);
+  // Delete task from the UI
   const deleteTask = (id) => {
     setTask(tasks.filter((task) => task.id !== id));
+  };
+  // Toggle the reminder
+  const reminder = (id) => {
+    setTask(
+      tasks.map((task) =>
+        task.id === id
+          ? {
+              ...task,
+              reminder: !task.reminder,
+            }
+          : task
+      )
+    );
   };
   return (
     <div className="container">
       <Header title="Task Tracker" />
       {tasks.length !== 0 ? (
-        <Tasks tasks={tasks} onDelete={deleteTask} />
+        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={reminder} />
       ) : (
         <h4>No Task to Show</h4>
       )}
