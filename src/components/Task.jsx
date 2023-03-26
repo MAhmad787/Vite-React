@@ -7,7 +7,7 @@ const Task = ({ task, onDelete, onToggle }) => {
       onDoubleClick={() => onToggle(task.id)}
     >
       <h3>
-        {task.name}
+        {task.text}
         <FaTimes color="red" onClick={() => onDelete(task.id)} />
       </h3>
       <p>{task.description}</p>
